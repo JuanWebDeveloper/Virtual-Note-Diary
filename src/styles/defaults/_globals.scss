@@ -29,4 +29,25 @@ p {
 	color: $text_color;
 	font-size: $font_size_text;
 	font-weight: $font_weight_text;
+
+	span {
+		color: $title_color;
+		font-weight: $font_weight_sub_title;
+	}
+}
+
+.button {
+	background-color: $background_color_secondary;
+	border-radius: 5px;
+	color: $text_color;
+	font-size: $font_size_button;
+	font-weight: $font_weight_button;
+	padding: 10px 20px;
+	text-decoration: none;
+	transition: $transition;
+
+	&:hover {
+		background-color: lighten($background_color_secondary, 15);
+		transform: scale(1.1);
+	}
 }
