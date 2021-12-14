@@ -1,5 +1,6 @@
 // LoginView and RegisterView Component Styles
-.auth__login-main {
+.auth__login-main,
+.auth__register-main {
 	align-items: center;
 	display: flex;
 	height: 100vh;
@@ -8,7 +9,8 @@
 	width: 100vw;
 }
 
-.auth__login-main-content {
+.auth__login-main-content,
+.auth__register-main-content {
 	background: $background_color_secondary;
 	border-radius: 5px;
 	padding: 20px;
