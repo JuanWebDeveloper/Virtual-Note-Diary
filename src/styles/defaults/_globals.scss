@@ -1,0 +1,32 @@
+// Global Styles
+* {
+	box-sizing: border-box;
+	font-family: $font_family;
+}
+
+body {
+	background-color: $background_color_primary;
+	margin: 0;
+	overflow-x: hidden;
+	padding: 0;
+}
+
+.title {
+	color: $title_color;
+	font-size: $font_size_title;
+	font-weight: $font_weight_title;
+	margin: 0;
+}
+
+.sub-title {
+	color: $title_color;
+	font-size: $font_size_sub_title;
+	font-weight: $font_weight_sub_title;
+	margin: 0;
+}
+
+p {
+	color: $text_color;
+	font-size: $font_size_text;
+	font-weight: $font_weight_text;
+}

@@ -1,0 +1,19 @@
+// Font Import
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+// Background Colors
+$background_color_primary: #0d1117;
+$background_color_secondary: lighten($background_color_primary, 15);
+
+// Text Colors
+$title_color: #58a6ff;
+$text_color: #f1f1f1;
+
+// Fonts Config
+$font_family: 'Poppins', sans-serif;
+$font_size_title: 2.8rem;
+$font_size_sub_title: 1.9rem;
+$font_size_text: 1.1rem;
+$font_weight_title: 700;
+$font_weight_sub_title: 500;
+$font_weight_text: 400;
