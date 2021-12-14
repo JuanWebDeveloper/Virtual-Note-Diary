@@ -7,7 +7,7 @@ export const LoginView = () => {
 		<div className='auth__login-main'>
 			<div className='auth__login-main-content'>
 				<h2 className='title'>Login</h2>
-				<form>
+				<form className='auth__form'>
 					<input type='text' name='email' placeholder='Email' className='auth__form-input' autoComplete='off' />
 					<input type='password' name='password' placeholder='Password' className='auth__form-input' />
 					<button className='auth__form-button'>Login</button>
@@ -18,9 +18,7 @@ export const LoginView = () => {
 							<div className='auth__google-logo'>
 								<img src={googleLogo} alt='google button' />
 							</div>
-							<p className='auth__google-button-text'>
-								<b>Sign in with google</b>
-							</p>
+							<p className='auth__google-button-text'>Sign in with google</p>
 						</div>
 					</div>
 

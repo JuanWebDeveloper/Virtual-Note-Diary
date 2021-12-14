@@ -1,0 +1,111 @@
+// LoginView and RegisterView Component Styles
+.auth__login-main {
+	align-items: center;
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	margin: 0;
+	width: 100vw;
+}
+
+.auth__login-main-content {
+	background: $background_color_secondary;
+	border-radius: 5px;
+	padding: 20px;
+
+	.auth__form {
+		display: flex;
+		flex-direction: column;
+		margin-top: 15px;
+
+		.auth__form-input {
+			background-color: $background_color_third;
+			border: none;
+			border-bottom: 2px solid $title_color;
+			border-radius: 5px;
+			color: $text_color;
+			font-size: $font_size_text;
+			height: 40px;
+			margin-bottom: 15px;
+			padding: 0 5px;
+			width: 300px;
+
+			&::placeholder {
+				color: lighten($text_color, 50);
+				opacity: 0.5;
+			}
+
+			&:focus {
+				outline: none;
+			}
+		}
+
+		.auth__form-button {
+			background-color: $background_color_third;
+			border: none;
+			border-bottom: 2px solid $title_color;
+			border-radius: 5px;
+			color: $text_color;
+			cursor: pointer;
+			font-size: $font_size_button;
+			font-weight: $font_weight_button;
+			left: calc(100% - 130px);
+			margin-bottom: 15px;
+			position: relative;
+			padding: 5px 0;
+			transition: $transition;
+			width: 130px;
+
+			&:hover {
+				background-color: lighten($background_color_third, 5);
+				transform: scale(1.1);
+			}
+		}
+	}
+}
+
+.auth__social-networks {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 20px 0;
+	width: 100%;
+
+	.auth__google-button {
+		background-color: $background_google_button;
+		border-radius: 5px;
+		cursor: pointer;
+		height: 42px;
+		margin-top: 15px;
+		transition: box-shadow 0.3s ease;
+		width: 100%;
+
+		.auth__google-logo {
+			background-color: $text_color;
+			border-radius: 5px;
+			height: 40px;
+			margin-top: 1px;
+			margin-left: 1px;
+			position: absolute;
+			width: 40px;
+
+			img {
+				height: 18px;
+				margin-top: 11px;
+				margin-left: 11px;
+				position: absolute;
+				width: 18px;
+			}
+		}
+
+		.auth__google-button-text {
+			color: $text_color;
+			font-size: $font_size_text;
+			font-weight: $font_weight_button;
+			margin-top: 8px;
+			padding-left: 40px;
+			text-align: center;
+		}
+	}
+}

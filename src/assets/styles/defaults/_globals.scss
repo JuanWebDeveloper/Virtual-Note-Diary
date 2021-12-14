@@ -16,6 +16,7 @@ body {
 	font-size: $font_size_title;
 	font-weight: $font_weight_title;
 	margin: 0;
+	text-align: center;
 }
 
 .sub-title {
@@ -37,17 +38,18 @@ p {
 }
 
 .button {
-	background-color: $background_color_secondary;
+	background-color: $background_color_third;
 	border-radius: 5px;
 	color: $text_color;
 	font-size: $font_size_button;
 	font-weight: $font_weight_button;
 	padding: 10px 20px;
+	text-align: center;
 	text-decoration: none;
 	transition: $transition;
 
 	&:hover {
-		background-color: lighten($background_color_secondary, 15);
+		background-color: lighten($background_color_third, 5);
 		transform: scale(1.1);
 	}
 }
