@@ -1,15 +1,31 @@
 import { Link } from 'react-router-dom';
 
+import { useForm } from '../../hooks/useForm';
+
 import googleLogo from '../../assets/images/auth/google_logo.svg';
 
 export const LoginView = () => {
+	const [formValues, handleInputChange] = useForm({
+		email: '',
+		password: '',
+	});
+
+	const { email, password } = formValues;
+
+	const handleLogin = (e) => {
+		e.preventDefault();
+
+		console.log('Email: ', email);
+		console.log('Password: ', password);
+	};
+
 	return (
 		<div className='auth__login-main'>
 			<div className='auth__login-main-content'>
 				<h2 className='title'>Login</h2>
-				<form className='auth__form'>
-					<input type='text' name='email' placeholder='Email' className='auth__form-input' autoComplete='off' />
-					<input type='password' name='password' placeholder='Password' className='auth__form-input' />
+				<form className='auth__form' onSubmit={handleLogin}>
+					<input type='text' name='email' placeholder='Email' className='auth__form-input' autoComplete='off' value={email} onChange={handleInputChange} />
+					<input type='password' name='password' placeholder='Password' className='auth__form-input' value={password} onChange={handleInputChange} />
 					<button className='auth__form-button'>Login</button>
 
 					<div className='auth__social-networks'>
