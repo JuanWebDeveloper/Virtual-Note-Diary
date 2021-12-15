@@ -3,7 +3,7 @@ export const Sidebar = () => {
 		<div className='diary__sidebar'>
 			<div className='diary__sidebar-navbar'>
 				<h3>
-					<i className='fas fa-user-tie'></i> <span>Juan</span>
+					<i class='fa fa-user-circle'></i> <span>Juan</span>
 				</h3>
 
 				<button className='diary__sidebar-navbar-logout'>Logout</button>
