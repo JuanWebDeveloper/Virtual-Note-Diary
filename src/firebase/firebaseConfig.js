@@ -1,5 +1,7 @@
 import { initializeApp } from 'firebase/app';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 
+// Firebase Config
 const firebaseConfig = {
 	apiKey: 'AIzaSyBu_3pl8FfOt-0vhyp53f6_aWT4VJrCNZo',
 	authDomain: 'virtual-note-diary.firebaseapp.com',
@@ -12,4 +14,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 
-export { firebaseApp };
+// Firebase authentication settings
+const auth = getAuth();
+const googleAuthProvider = new GoogleAuthProvider();
+
+export { firebaseApp, auth, googleAuthProvider, signInWithPopup };
