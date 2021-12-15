@@ -1,10 +1,15 @@
 import { Link } from 'react-router-dom';
 
+import { useDispatch } from 'react-redux';
+
 import { useForm } from '../../hooks/useForm';
+import { loginAction } from '../../actions/auth';
 
 import googleLogo from '../../assets/images/auth/google_logo.svg';
 
 export const LoginView = () => {
+	const dispatch = useDispatch();
+
 	const [formValues, handleInputChange] = useForm({
 		email: '',
 		password: '',
@@ -15,8 +20,7 @@ export const LoginView = () => {
 	const handleLogin = (e) => {
 		e.preventDefault();
 
-		console.log('Email: ', email);
-		console.log('Password: ', password);
+		dispatch(loginAction(email, password));
 	};
 
 	return (
