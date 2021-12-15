@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const SingleNote = () => {
 	return (
 		<div className='diary__single-note'>
@@ -11,7 +13,6 @@ export const SingleNote = () => {
 
 			<div className='diary__single-note-body'>
 				<p className='diary__single-note-title'>Application under construction</p>
-				<p className='diary__single-note-content'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, eum?</p>
 			</div>
 
 			<div className='diary__single-note-date-box'>

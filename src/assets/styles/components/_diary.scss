@@ -10,7 +10,7 @@
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
-	width: 25%;
+	width: 30%;
 
 	.diary__sidebar-navbar {
 		align-items: center;
@@ -63,5 +63,60 @@
 		&:hover {
 			background-color: $background_color_secondary;
 		}
+	}
+}
+
+// DiaryNotes Component Styles
+.diary__notes {
+	flex: 1 1 auto;
+	margin-top: 30px;
+	overflow-y: scroll;
+}
+
+.diary__single-note {
+	align-items: center;
+	background-color: $background_color_secondary;
+	color: $text_color;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-bottom: 15px;
+	padding: 10px;
+	transition: $transition;
+
+	.diary__single-note-picture {
+		border-radius: 5px;
+		height: 100px;
+		width: 100px;
+	}
+
+	.diary__single-note-body {
+		text-align: center;
+
+		.diary__single-note-title {
+			color: $title_color;
+			font-size: $font_size_button;
+			font-weight: $font_weight_sub-title;
+			margin: 10px 0;
+		}
+	}
+
+	.diary__single-note-date-box {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+
+		span {
+			font-size: $font_size_text;
+		}
+
+		h4 {
+			margin: 0;
+		}
+	}
+
+	&:hover {
+		background-color: $background_color_primary;
 	}
 }
