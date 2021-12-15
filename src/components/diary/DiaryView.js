@@ -1,5 +1,6 @@
 import { Sidebar } from './Sidebar';
-import { NoteSelected } from './NoteSelected';
+// import { NoteSelected } from './NoteSelected';
+import { NoteView } from '../notes/NoteView';
 
 export const DiaryView = () => {
 	return (
@@ -7,7 +8,8 @@ export const DiaryView = () => {
 			<Sidebar />
 
 			<section>
-				<NoteSelected />
+				{/* <NoteSelected /> */}
+				<NoteView />
 			</section>
 		</div>
 	);
