@@ -12,7 +12,7 @@ export const RegisterView = () => {
 					<input type='password' name='passwordConfirm' placeholder='Confirm password' className='auth__form-input' />
 					<button className='auth__form-button'>Register</button>
 
-					<Link to='/auth/login' className='button'>
+					<Link to='/auth/login' className='auth__link'>
 						Already registered?
 					</Link>
 				</form>

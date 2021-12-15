@@ -64,6 +64,20 @@
 			}
 		}
 	}
+
+	.auth__link {
+		color: $text_color;
+		font-size: $font_size_button;
+		font-weight: $font_weight_button;
+		text-align: center;
+		text-decoration: none;
+		transition: $transition;
+
+		&:hover {
+			letter-spacing: 1px;
+			color: $title_color;
+		}
+	}
 }
 
 .auth__social-networks {

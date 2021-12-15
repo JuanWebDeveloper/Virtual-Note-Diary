@@ -22,7 +22,7 @@ export const LoginView = () => {
 						</div>
 					</div>
 
-					<Link to='/auth/register' className='button'>
+					<Link to='/auth/register' className='auth__link'>
 						Create new account
 					</Link>
 				</form>
