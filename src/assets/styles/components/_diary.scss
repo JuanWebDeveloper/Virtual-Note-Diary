@@ -117,6 +117,21 @@
 	}
 
 	&:hover {
-		background-color: $background_color_primary;
+		opacity: 0.5;
+	}
+}
+
+// NoteSelected Component Styles
+.diary__note-selected {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100vh;
+	width: 70vw;
+
+	p {
+		font-size: $font_size_title;
+		text-align: center;
 	}
 }

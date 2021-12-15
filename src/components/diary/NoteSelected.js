@@ -6,9 +6,8 @@ export const NoteSelected = () => {
 			<p>
 				Select a note
 				<br />
-				or create a new
+				<span>or create a new</span>
 			</p>
-			<i className='far fa-star fa-4x mt-3'></i>
 		</div>
 	);
 };
