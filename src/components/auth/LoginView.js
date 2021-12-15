@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { useForm } from '../../hooks/useForm';
-import { loginAction } from '../../actions/auth';
+import { loginAction, loginWithGoogleAction } from '../../actions/auth';
 
 import googleLogo from '../../assets/images/auth/google_logo.svg';
 
@@ -23,6 +23,8 @@ export const LoginView = () => {
 		dispatch(loginAction(email, password));
 	};
 
+	const handleLoginWithGoogle = () => dispatch(loginWithGoogleAction());
+
 	return (
 		<div className='auth__login-main'>
 			<div className='auth__login-main-content'>
@@ -34,7 +36,7 @@ export const LoginView = () => {
 
 					<div className='auth__social-networks'>
 						<h4 className='sub-title'>Or login with</h4>
-						<div className='auth__google-button'>
+						<div className='auth__google-button' onClick={handleLoginWithGoogle}>
 							<div className='auth__google-logo'>
 								<img src={googleLogo} alt='google button' />
 							</div>
