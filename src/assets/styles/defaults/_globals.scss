@@ -11,6 +11,15 @@ body {
 	padding: 0;
 }
 
+// Application Scroll Styles
+*::-webkit-scrollbar {
+	width: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+	background: $title_color;
+}
+
 .title {
 	color: $title_color;
 	font-size: $font_size_title;
