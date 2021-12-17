@@ -3,6 +3,9 @@ export const types = {
 	logout: '[Auth] Logout',
 
 	// Types For Errors
-	formRegisterError: '[Error] Form Register Error ',
-	cleanUpErrors: '[Error] Clean Up Errors',
+	formRegisterError: '[Interface] Form Register Error ',
+	cleanUpErrors: '[Interface] Clean Up Errors',
+	// Types For Loading
+	startLoading: '[Interface]  Start Loading',
+	fisnishLoading: '[Interface] Finish Loading',
 };

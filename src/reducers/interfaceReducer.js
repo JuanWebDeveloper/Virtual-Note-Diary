@@ -6,7 +6,7 @@ const initialState = {
 	withMistakes: false,
 };
 
-export const errorsReducer = (state = initialState, action) => {
+export const interfaceReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case types.formRegisterError:
 			return {
