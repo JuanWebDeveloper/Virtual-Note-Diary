@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { useForm } from '../../hooks/useForm';
 import { registerFormValidation } from '../../helpers/formsValidation';
+import { registerAction } from '../../actions/auth';
 
 export const RegisterView = () => {
 	const dispatch = useDispatch();
@@ -26,7 +27,7 @@ export const RegisterView = () => {
 		setValidateField(validationForm.field);
 
 		if (validationForm.errorStatus) {
-			console.log(name, email, password, passwordConfirm);
+			dispatch(registerAction(name, email, password));
 		}
 	};
 
