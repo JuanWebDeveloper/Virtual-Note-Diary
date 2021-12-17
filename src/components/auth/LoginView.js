@@ -1,14 +1,19 @@
 import { Link } from 'react-router-dom';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { useForm } from '../../hooks/useForm';
 import { loginAction, loginWithGoogleAction } from '../../actions/auth';
+import { loginFormValidation } from '../../helpers/formsValidation';
 
 import googleLogo from '../../assets/images/auth/google_logo.svg';
+import { useState } from 'react';
 
 export const LoginView = () => {
 	const dispatch = useDispatch();
+	const { errorMessage, withMistakes } = useSelector((state) => state.errors);
+
+	const [validateField, setValidateField] = useState();
 
 	const [formValues, handleInputChange] = useForm({
 		email: '',
@@ -20,7 +25,12 @@ export const LoginView = () => {
 	const handleLogin = (e) => {
 		e.preventDefault();
 
-		dispatch(loginAction(email, password));
+		const validationForm = loginFormValidation(formValues, dispatch);
+		setValidateField(validationForm.field);
+
+		if (validationForm.errorStatus) {
+			dispatch(loginAction(email, password));
+		}
 	};
 
 	const handleLoginWithGoogle = () => dispatch(loginWithGoogleAction());
@@ -30,8 +40,25 @@ export const LoginView = () => {
 			<div className='auth__login-main-content'>
 				<h2 className='title'>Login</h2>
 				<form className='auth__form' onSubmit={handleLogin}>
-					<input type='text' name='email' placeholder='Email' className='auth__form-input' autoComplete='off' value={email} onChange={handleInputChange} />
-					<input type='password' name='password' placeholder='Password' className='auth__form-input' value={password} onChange={handleInputChange} />
+					{withMistakes && <div className='auth__form-alert-error'>{errorMessage}</div>}
+
+					<input
+						type='text'
+						name='email'
+						placeholder='Email'
+						className={`auth__form-input ${validateField === 'email' && 'auth__form-input-error'}`}
+						autoComplete='off'
+						value={email}
+						onChange={handleInputChange}
+					/>
+					<input
+						type='password'
+						name='password'
+						placeholder='Password'
+						className={`auth__form-input ${validateField === 'password' && 'auth__form-input-error'}`}
+						value={password}
+						onChange={handleInputChange}
+					/>
 					<button className='auth__form-button'>Login</button>
 
 					<div className='auth__social-networks'>
