@@ -11,7 +11,7 @@ import { useState } from 'react';
 
 export const LoginView = () => {
 	const dispatch = useDispatch();
-	const { errorMessage, withMistakes } = useSelector((state) => state.errors);
+	const { errorMessage, withMistakes } = useSelector((state) => state.interface);
 
 	const [validateField, setValidateField] = useState();
 

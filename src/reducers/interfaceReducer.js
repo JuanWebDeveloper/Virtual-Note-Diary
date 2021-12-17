@@ -21,6 +21,18 @@ export const interfaceReducer = (state = initialState, action) => {
 				errorMessage: '',
 				withMistakes: false,
 			};
+
+		case types.startLoading:
+			return {
+				...state,
+				loadign: true,
+			};
+
+		case types.fisnishLoading:
+			return {
+				...state,
+				loadign: false,
+			};
 		default:
 			return state;
 	}
