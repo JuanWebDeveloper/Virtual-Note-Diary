@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { useForm } from '../../hooks/useForm';
+import { registerFormValidation } from '../../helpers/formsValidation';
 
 export const RegisterView = () => {
 	const [formValues, handleInputChange] = useForm({
@@ -15,7 +16,12 @@ export const RegisterView = () => {
 	const handleRegister = (e) => {
 		e.preventDefault();
 
-		console.log(name, email, password, passwordConfirm);
+		const validationForm = registerFormValidation(formValues);
+		console.log(validationForm);
+
+		if (validationForm === true) {
+			console.log(name, email, password, passwordConfirm);
+		}
 	};
 
 	return (
