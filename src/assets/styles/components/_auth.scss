@@ -63,6 +63,18 @@
 				transform: scale(1.1);
 			}
 		}
+
+		.auth__form-alert-error {
+			background-color: $background_alert_error;
+			border-radius: 5px;
+			color: $text_color;
+			font-size: $font_size_text;
+			font-weight: $font_weight_text;
+			margin-bottom: 15px;
+			padding: 5px;
+			text-align: center;
+			transition: $transition;
+		}
 	}
 
 	.auth__link {

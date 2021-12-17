@@ -23,6 +23,7 @@ export const RegisterView = () => {
 			<div className='auth__register-main-content'>
 				<h2 className='title'>Register</h2>
 				<form className='auth__form' onSubmit={handleRegister}>
+					<div className='auth__form-alert-error'>Error Message</div>
 					<input type='text' name='name' placeholder='Name' className='auth__form-input' autoComplete='off' value={name} onChange={handleInputChange} />
 					<input type='text' name='email' placeholder='Email' className='auth__form-input' autoComplete='off' value={email} onChange={handleInputChange} />
 					<input type='password' name='password' placeholder='Password' className='auth__form-input' value={password} onChange={handleInputChange} />
