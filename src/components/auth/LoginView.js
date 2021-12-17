@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useForm } from '../../hooks/useForm';
-import { loginAction, loginWithGoogleAction } from '../../actions/auth';
+import { loginWithEmailAndPasswordAction, loginWithGoogleAction } from '../../actions/auth';
 import { loginFormValidation } from '../../helpers/formsValidation';
 
 import googleLogo from '../../assets/images/auth/google_logo.svg';
@@ -29,7 +29,7 @@ export const LoginView = () => {
 		setValidateField(validationForm.field);
 
 		if (validationForm.errorStatus) {
-			dispatch(loginAction(email, password));
+			dispatch(loginWithEmailAndPasswordAction(email, password));
 		}
 	};
 

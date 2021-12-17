@@ -1,5 +1,12 @@
 import { types } from '../types/types';
-import { auth, googleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, updateProfile } from '../firebase/firebaseConfig';
+import {
+	auth,
+	googleAuthProvider,
+	signInWithPopup,
+	createUserWithEmailAndPassword,
+	updateProfile,
+	signInWithEmailAndPassword,
+} from '../firebase/firebaseConfig';
 
 // Action To Login
 export const loginAction = (uid, displayName) => ({
@@ -25,6 +32,19 @@ export const registerAction = (name, email, password) => {
 		createUserWithEmailAndPassword(auth, email, password)
 			.then(async ({ user }) => {
 				await updateProfile(auth.currentUser, { displayName: name });
+				dispatch(loginAction(user.uid, user.displayName));
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
+};
+
+// Login With Email And Password
+export const loginWithEmailAndPasswordAction = (email, password) => {
+	return (dispatch) => {
+		signInWithEmailAndPassword(auth, email, password)
+			.then(({ user }) => {
 				dispatch(loginAction(user.uid, user.displayName));
 			})
 			.catch((error) => {
