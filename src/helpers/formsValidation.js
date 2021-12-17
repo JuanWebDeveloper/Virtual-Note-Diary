@@ -4,30 +4,82 @@ import { formRegisterError, cleanUpErrors } from '../actions/errors';
 
 export const registerFormValidation = (valuesToValidate = {}, dispatch) => {
 	const { name, email, password, passwordConfirm } = valuesToValidate;
+	let validationData = {
+		field: '',
+		errorStatus: false,
+	};
 
 	if (validator.isEmpty(name)) {
 		dispatch(formRegisterError('Name is required'));
-		return false;
+
+		validationData = {
+			field: 'name',
+			errorStatus: false,
+		};
+
+		return validationData;
 	} else if (validator.isEmpty(email)) {
 		dispatch(formRegisterError('Email is required'));
-		return false;
+
+		validationData = {
+			field: 'email',
+			errorStatus: false,
+		};
+
+		return validationData;
 	} else if (!validator.isEmail(email)) {
 		dispatch(formRegisterError('Email is not valid'));
-		return false;
+
+		validationData = {
+			field: 'email',
+			errorStatus: false,
+		};
+
+		return validationData;
 	} else if (validator.isEmpty(password)) {
 		dispatch(formRegisterError('Password is required'));
-		return false;
+
+		validationData = {
+			field: 'password',
+			errorStatus: false,
+		};
+
+		return validationData;
 	} else if (password.trim().length < 8) {
 		dispatch(formRegisterError('Password must be at least 8 characters'));
-		return false;
+
+		validationData = {
+			field: 'password',
+			errorStatus: false,
+		};
+
+		return validationData;
 	} else if (validator.isEmpty(passwordConfirm)) {
 		dispatch(formRegisterError('Password confirmation is required'));
-		return false;
+
+		validationData = {
+			field: 'passwordConfirm',
+			errorStatus: false,
+		};
+
+		return validationData;
 	} else if (!validator.equals(password, passwordConfirm)) {
 		dispatch(formRegisterError('Passwords do not match'));
-		return false;
+
+		validationData = {
+			field: 'passwords not match',
+			errorStatus: false,
+		};
+
+		return validationData;
 	}
 
 	dispatch(cleanUpErrors());
-	return true;
+
+	validationData = {
+		field: '',
+		errorStatus: true,
+	};
+
+	return validationData;
 };
