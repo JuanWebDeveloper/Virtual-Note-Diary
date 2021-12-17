@@ -28,7 +28,7 @@ export const interfaceReducer = (state = initialState, action) => {
 				loadign: true,
 			};
 
-		case types.fisnishLoading:
+		case types.finishLoading:
 			return {
 				...state,
 				loadign: false,

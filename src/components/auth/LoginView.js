@@ -11,7 +11,7 @@ import { useState } from 'react';
 
 export const LoginView = () => {
 	const dispatch = useDispatch();
-	const { errorMessage, withMistakes } = useSelector((state) => state.interface);
+	const { errorMessage, withMistakes, loading } = useSelector((state) => state.interface);
 
 	const [validateField, setValidateField] = useState();
 
@@ -59,7 +59,9 @@ export const LoginView = () => {
 						value={password}
 						onChange={handleInputChange}
 					/>
-					<button className='auth__form-button'>Login</button>
+					<button className='auth__form-button' disabled={loading}>
+						Login
+					</button>
 
 					<div className='auth__social-networks'>
 						<h4 className='sub-title'>Or login with</h4>

@@ -1,6 +1,6 @@
 import validator from 'validator';
 
-import { formRegisterError, cleanUpErrors } from '../actions/errors';
+import { formRegisterError, cleanUpErrors } from '../actions/interface';
 
 // Resigter Form Validation
 export const registerFormValidation = (valuesToValidate = {}, dispatch) => {

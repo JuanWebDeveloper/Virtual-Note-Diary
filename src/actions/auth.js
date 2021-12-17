@@ -8,6 +8,8 @@ import {
 	signInWithEmailAndPassword,
 } from '../firebase/firebaseConfig';
 
+import { finishLoadingAction, startLoadingAction } from './interface';
+
 // Action To Login
 export const loginAction = (uid, displayName) => ({
 	type: types.login,
@@ -40,15 +42,18 @@ export const registerAction = (name, email, password) => {
 	};
 };
 
-// Login With Email And Password
+// Action To Login With Email And Password
 export const loginWithEmailAndPasswordAction = (email, password) => {
 	return (dispatch) => {
+		dispatch(startLoadingAction());
 		signInWithEmailAndPassword(auth, email, password)
 			.then(({ user }) => {
 				dispatch(loginAction(user.uid, user.displayName));
+				dispatch(finishLoadingAction());
 			})
 			.catch((error) => {
 				console.log(error);
+				dispatch(finishLoadingAction());
 			});
 	};
 };

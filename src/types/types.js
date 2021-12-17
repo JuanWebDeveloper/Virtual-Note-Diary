@@ -7,5 +7,5 @@ export const types = {
 	cleanUpErrors: '[Interface] Clean Up Errors',
 	// Types For Loading
 	startLoading: '[Interface]  Start Loading',
-	fisnishLoading: '[Interface] Finish Loading',
+	finishLoading: '[Interface] Finish Loading',
 };
