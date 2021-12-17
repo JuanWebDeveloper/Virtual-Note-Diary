@@ -1,9 +1,12 @@
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { useForm } from '../../hooks/useForm';
 import { registerFormValidation } from '../../helpers/formsValidation';
 
 export const RegisterView = () => {
+	const dispatch = useDispatch();
+
 	const [formValues, handleInputChange] = useForm({
 		name: '',
 		email: '',
@@ -16,7 +19,7 @@ export const RegisterView = () => {
 	const handleRegister = (e) => {
 		e.preventDefault();
 
-		const validationForm = registerFormValidation(formValues);
+		const validationForm = registerFormValidation(formValues, dispatch);
 		console.log(validationForm);
 
 		if (validationForm === true) {

@@ -1,23 +1,33 @@
 import validator from 'validator';
 
-export const registerFormValidation = (valuesToValidate = {}) => {
+import { formRegisterError, cleanUpErrors } from '../actions/errors';
+
+export const registerFormValidation = (valuesToValidate = {}, dispatch) => {
 	const { name, email, password, passwordConfirm } = valuesToValidate;
 
 	if (validator.isEmpty(name)) {
-		return 'Name is required';
+		dispatch(formRegisterError('Name is required'));
+		return false;
 	} else if (validator.isEmpty(email)) {
-		return 'Email is required';
+		dispatch(formRegisterError('Email is required'));
+		return false;
 	} else if (!validator.isEmail(email)) {
-		return 'Email is invalid';
+		dispatch(formRegisterError('Email is not valid'));
+		return false;
 	} else if (validator.isEmpty(password)) {
-		return 'Password is required';
+		dispatch(formRegisterError('Password is required'));
+		return false;
 	} else if (password.trim().length < 8) {
-		return 'The password must have a minimum of 8 characters';
+		dispatch(formRegisterError('Password must be at least 8 characters'));
+		return false;
 	} else if (validator.isEmpty(passwordConfirm)) {
-		return 'Password confirm is required';
+		dispatch(formRegisterError('Password confirmation is required'));
+		return false;
 	} else if (!validator.equals(password, passwordConfirm)) {
-		return 'Password and password confirm must be the same';
+		dispatch(formRegisterError('Passwords do not match'));
+		return false;
 	}
 
+	dispatch(cleanUpErrors());
 	return true;
 };
