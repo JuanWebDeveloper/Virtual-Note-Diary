@@ -1,7 +1,7 @@
 import { types } from '../types/types';
 
 const initialState = {
-	messageError: '',
+	errorMessage: '',
 	loadign: false,
 	withMistakes: false,
 };
@@ -11,14 +11,14 @@ export const errorsReducer = (state = initialState, action) => {
 		case types.formRegisterError:
 			return {
 				...state,
-				messageError: action.payload,
+				errorMessage: action.payload,
 				withMistakes: true,
 			};
 
 		case types.cleanUpErrors:
 			return {
 				...state,
-				messageError: '',
+				errorMessage: '',
 				withMistakes: false,
 			};
 		default:
