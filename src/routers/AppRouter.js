@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
+import { auth, onAuthStateChanged } from '../firebase/firebaseConfig';
+import { loginAction } from '../actions/auth';
+
 import { AuthRouter } from './AuthRouter';
 import { HomePage } from '../components/home/HomePage';
 import { DiaryView } from '../components/diary/DiaryView';
-import { auth, onAuthStateChanged } from '../firebase/firebaseConfig';
-import { loginAction } from '../actions/auth';
+import { LoadingView } from '../components/layout/LoadingView';
 
 export const AppRouter = () => {
 	const dispatch = useDispatch();
@@ -27,7 +29,7 @@ export const AppRouter = () => {
 	}, [dispatch]);
 
 	if (sessionVerification) {
-		return <h2>Wait...</h2>;
+		return <LoadingView />;
 	}
 
 	return (

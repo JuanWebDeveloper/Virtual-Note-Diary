@@ -1,0 +1,25 @@
+// LoadingView Component Styles
+.layout__loading-main {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	justify-content: center;
+
+	.layout__loading-circle {
+		animation: 1.5s linear infinite loading-circle;
+		border: 5px solid #f3f3f380;
+		border-top-color: #f3f3f3;
+		border-radius: 50%;
+		height: 75px;
+		width: 75px;
+		@keyframes loading-circle {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+	}
+}
