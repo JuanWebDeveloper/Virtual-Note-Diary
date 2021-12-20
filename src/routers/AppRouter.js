@@ -6,9 +6,11 @@ import { auth, onAuthStateChanged } from '../firebase/firebaseConfig';
 import { loginAction } from '../actions/auth';
 
 import { AuthRouter } from './AuthRouter';
-import { HomePage } from '../components/home/HomePage';
-import { DiaryView } from '../components/diary/DiaryView';
+
 import { LoadingView } from '../components/layout/LoadingView';
+import { PublicRouter } from './PublicRouter';
+import { PrivateRouter } from './PrivateRouter';
+import { DashboardRouter } from './DashboardRouter';
 
 export const AppRouter = () => {
 	const dispatch = useDispatch();
@@ -19,9 +21,9 @@ export const AppRouter = () => {
 		onAuthStateChanged(auth, (user) => {
 			if (user?.uid) {
 				dispatch(loginAction(user.uid, user.displayName));
-				setSessionIsActive(false);
-			} else {
 				setSessionIsActive(true);
+			} else {
+				setSessionIsActive(false);
 			}
 
 			setSessionVerification(false);
@@ -35,10 +37,22 @@ export const AppRouter = () => {
 	return (
 		<Router>
 			<Routes>
-				<Route exact path='/' element={<HomePage />} />
-				<Route exact path='/diary/' element={<DiaryView />} />
-				<Route path='/auth/*' element={<AuthRouter />} />
-				<Route path='*' element={<Navigate to='/auth/login' />} />
+				<Route
+					path='/*'
+					element={
+						<PrivateRouter sessionIsActive={sessionIsActive}>
+							<DashboardRouter />
+						</PrivateRouter>
+					}
+				/>
+				<Route
+					path='/auth/*'
+					element={
+						<PublicRouter sessionIsActive={sessionIsActive}>
+							<AuthRouter />
+						</PublicRouter>
+					}
+				/>
 			</Routes>
 		</Router>
 	);
