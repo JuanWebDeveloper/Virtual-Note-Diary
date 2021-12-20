@@ -7,6 +7,7 @@ import {
 	updateProfile,
 	signInWithEmailAndPassword,
 	onAuthStateChanged,
+	signOut,
 } from 'firebase/auth';
 
 // Firebase Config
@@ -35,4 +36,5 @@ export {
 	updateProfile,
 	signInWithEmailAndPassword,
 	onAuthStateChanged,
+	signOut,
 };

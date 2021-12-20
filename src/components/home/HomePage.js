@@ -8,7 +8,7 @@ export const HomePage = () => {
 				<p style={{ marginBottom: '40px' }}>
 					You have <span>10</span> notes created.
 				</p>
-				<Link to='/' className='button'>
+				<Link to='/diary/' className='button'>
 					View Notes
 				</Link>
 			</div>

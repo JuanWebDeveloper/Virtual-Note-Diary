@@ -6,6 +6,7 @@ import {
 	createUserWithEmailAndPassword,
 	updateProfile,
 	signInWithEmailAndPassword,
+	signOut,
 } from '../firebase/firebaseConfig';
 
 import { finishLoadingAction, startLoadingAction } from './interface';
@@ -55,5 +56,17 @@ export const loginWithEmailAndPasswordAction = (email, password) => {
 				console.log(error);
 				dispatch(finishLoadingAction());
 			});
+	};
+};
+
+// Action To Logout
+export const logoutAction = () => ({ type: types.logout });
+
+// Action To Execute The Logout
+export const executeActionLogout = () => {
+	return (dispatch) => {
+		signOut(auth).then(() => {
+			dispatch(logoutAction());
+		});
 	};
 };

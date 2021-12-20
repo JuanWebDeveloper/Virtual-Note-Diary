@@ -8,7 +8,7 @@ import { registerAction } from '../../actions/auth';
 
 export const RegisterView = () => {
 	const dispatch = useDispatch();
-	const { errorMessage, withMistakes } = useSelector((state) => state.errors);
+	const { errorMessage, withMistakes } = useSelector((state) => state.interface);
 	const [validateField, setValidateField] = useState();
 
 	const [formValues, handleInputChange] = useForm({
