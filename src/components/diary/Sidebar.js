@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { executeActionLogout } from '../../actions/auth';
 
@@ -6,6 +6,7 @@ import { DiaryNotes } from './DiaryNotes';
 
 export const Sidebar = () => {
 	const dispatch = useDispatch();
+	const { name } = useSelector((state) => state.auth);
 
 	const handleLogout = () => {
 		dispatch(executeActionLogout());
@@ -15,7 +16,7 @@ export const Sidebar = () => {
 		<div className='diary__sidebar'>
 			<div className='diary__sidebar-navbar'>
 				<h3>
-					<i className='fa fa-user-circle'></i> <span>Juan</span>
+					<i className='fa fa-user-circle'></i> <span>{name}</span>
 				</h3>
 
 				<button className='diary__sidebar-navbar-logout' onClick={handleLogout}>
