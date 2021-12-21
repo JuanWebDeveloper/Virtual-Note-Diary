@@ -3,141 +3,97 @@ import validator from 'validator';
 import { formRegisterError, cleanUpErrors } from '../actions/interface';
 
 // Resigter Form Validation
-export const registerFormValidation = (valuesToValidate = {}, dispatch) => {
-	const { name, email, password, passwordConfirm } = valuesToValidate;
-	let validationData = {
-		field: '',
-		errorStatus: false,
-	};
+export const registerFormValidation = (valuesToValidate = {}, dispatch, errorFirebase = false, errorFirebaseMessage) => {
+	let validationData = false;
 
-	if (validator.isEmpty(name)) {
-		dispatch(formRegisterError('Name is required'));
-
-		validationData = {
-			field: 'name',
-			errorStatus: false,
-		};
+	if (errorFirebase) {
+		if (errorFirebaseMessage === 'Firebase: Error (auth/email-already-in-use).') {
+			dispatch(formRegisterError('The email address is already in use by another account', 'email'));
+		} else {
+			dispatch(formRegisterError(errorFirebaseMessage, ''));
+		}
 
 		return validationData;
-	} else if (validator.isEmpty(email)) {
-		dispatch(formRegisterError('Email is required'));
+	} else {
+		const { name, email, password, passwordConfirm } = valuesToValidate;
 
-		validationData = {
-			field: 'email',
-			errorStatus: false,
-		};
+		if (validator.isEmpty(name)) {
+			dispatch(formRegisterError('Name is required', 'name'));
 
-		return validationData;
-	} else if (!validator.isEmail(email)) {
-		dispatch(formRegisterError('Email is not valid'));
+			return validationData;
+		} else if (validator.isEmpty(email)) {
+			dispatch(formRegisterError('Email is required', 'email'));
 
-		validationData = {
-			field: 'email',
-			errorStatus: false,
-		};
+			return validationData;
+		} else if (!validator.isEmail(email)) {
+			dispatch(formRegisterError('Email is not valid', 'email'));
 
-		return validationData;
-	} else if (validator.isEmpty(password)) {
-		dispatch(formRegisterError('Password is required'));
+			return validationData;
+		} else if (validator.isEmpty(password)) {
+			dispatch(formRegisterError('Password is required', 'password'));
 
-		validationData = {
-			field: 'password',
-			errorStatus: false,
-		};
+			return validationData;
+		} else if (password.trim().length < 8) {
+			dispatch(formRegisterError('Password must be at least 8 characters', 'password'));
 
-		return validationData;
-	} else if (password.trim().length < 8) {
-		dispatch(formRegisterError('Password must be at least 8 characters'));
+			return validationData;
+		} else if (validator.isEmpty(passwordConfirm)) {
+			dispatch(formRegisterError('Password confirmation is required', 'passwordConfirm'));
 
-		validationData = {
-			field: 'password',
-			errorStatus: false,
-		};
+			return validationData;
+		} else if (!validator.equals(password, passwordConfirm)) {
+			dispatch(formRegisterError('Passwords do not match', 'passwords not match'));
 
-		return validationData;
-	} else if (validator.isEmpty(passwordConfirm)) {
-		dispatch(formRegisterError('Password confirmation is required'));
+			return validationData;
+		}
 
-		validationData = {
-			field: 'passwordConfirm',
-			errorStatus: false,
-		};
+		dispatch(cleanUpErrors());
 
-		return validationData;
-	} else if (!validator.equals(password, passwordConfirm)) {
-		dispatch(formRegisterError('Passwords do not match'));
-
-		validationData = {
-			field: 'passwords not match',
-			errorStatus: false,
-		};
+		validationData = true;
 
 		return validationData;
 	}
-
-	dispatch(cleanUpErrors());
-
-	validationData = {
-		field: '',
-		errorStatus: true,
-	};
-
-	return validationData;
 };
 
 // Login Form Validation
-export const loginFormValidation = (valuesToValidate = {}, dispatch) => {
-	const { email, password } = valuesToValidate;
+export const loginFormValidation = (valuesToValidate = {}, dispatch, errorFirebase = false, errorFirebaseMessage) => {
+	let validationData = false;
 
-	let validationData = {
-		field: '',
-		errorStatus: false,
-	};
-
-	if (validator.isEmpty(email)) {
-		dispatch(formRegisterError('Email is required'));
-
-		validationData = {
-			field: 'email',
-			errorStatus: false,
-		};
+	if (errorFirebase) {
+		if (errorFirebaseMessage === 'Firebase: Error (auth/wrong-password).') {
+			dispatch(formRegisterError('Incorrect password', 'password'));
+		} else if (errorFirebaseMessage === 'Firebase: Error (auth/user-not-found).') {
+			dispatch(formRegisterError('Email address is not registered', 'email'));
+		} else {
+			dispatch(formRegisterError(errorFirebaseMessage, ''));
+		}
 
 		return validationData;
-	} else if (!validator.isEmail(email)) {
-		dispatch(formRegisterError('Email is not valid'));
+	} else {
+		const { email, password } = valuesToValidate;
 
-		validationData = {
-			field: 'email',
-			errorStatus: false,
-		};
+		if (validator.isEmpty(email)) {
+			dispatch(formRegisterError('Email is required', 'email'));
 
-		return validationData;
-	} else if (validator.isEmpty(password)) {
-		dispatch(formRegisterError('Password is required'));
+			return validationData;
+		} else if (!validator.isEmail(email)) {
+			dispatch(formRegisterError('Email is not valid', 'email'));
 
-		validationData = {
-			field: 'password',
-			errorStatus: false,
-		};
+			return validationData;
+		} else if (validator.isEmpty(password)) {
+			dispatch(formRegisterError('Password is required', 'password'));
 
-		return validationData;
-	} else if (password.trim().length < 8) {
-		dispatch(formRegisterError('Password must be at least 8 characters'));
+			return validationData;
+		} else if (password.trim().length < 8) {
+			dispatch(formRegisterError('Password must be at least 8 characters', 'password'));
 
-		validationData = {
-			field: 'password',
-			errorStatus: false,
-		};
-
-		return validationData;
+			return validationData;
+		}
 	}
 
 	dispatch(cleanUpErrors());
 
-	validationData = {
-		field: '',
-		errorStatus: true,
-	};
+	validationData = true;
 
 	return validationData;
 };

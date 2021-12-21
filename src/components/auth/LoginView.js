@@ -7,13 +7,10 @@ import { loginWithEmailAndPasswordAction, loginWithGoogleAction } from '../../ac
 import { loginFormValidation } from '../../helpers/formsValidation';
 
 import googleLogo from '../../assets/images/auth/google_logo.svg';
-import { useState } from 'react';
 
 export const LoginView = () => {
 	const dispatch = useDispatch();
-	const { errorMessage, withMistakes, loading } = useSelector((state) => state.interface);
-
-	const [validateField, setValidateField] = useState();
+	const { errorMessage, withMistakes, loading, validateField } = useSelector((state) => state.interface);
 
 	const [formValues, handleInputChange] = useForm({
 		email: '',
@@ -26,9 +23,8 @@ export const LoginView = () => {
 		e.preventDefault();
 
 		const validationForm = loginFormValidation(formValues, dispatch);
-		setValidateField(validationForm.field);
 
-		if (validationForm.errorStatus) {
+		if (validationForm) {
 			dispatch(loginWithEmailAndPasswordAction(email, password));
 		}
 	};

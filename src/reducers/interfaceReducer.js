@@ -4,6 +4,7 @@ const initialState = {
 	errorMessage: '',
 	loadign: false,
 	withMistakes: false,
+	validateField: '',
 };
 
 export const interfaceReducer = (state = initialState, action) => {
@@ -13,6 +14,7 @@ export const interfaceReducer = (state = initialState, action) => {
 				...state,
 				errorMessage: action.payload,
 				withMistakes: true,
+				validateField: action.field,
 			};
 
 		case types.cleanUpErrors:
@@ -20,6 +22,7 @@ export const interfaceReducer = (state = initialState, action) => {
 				...state,
 				errorMessage: '',
 				withMistakes: false,
+				validateField: '',
 			};
 
 		case types.startLoading:

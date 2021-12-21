@@ -10,6 +10,7 @@ import {
 } from '../firebase/firebaseConfig';
 
 import { finishLoadingAction, startLoadingAction } from './interface';
+import { loginFormValidation, registerFormValidation } from '../helpers/formsValidation';
 
 // Action To Login
 export const loginAction = (uid, displayName) => ({
@@ -38,7 +39,7 @@ export const registerAction = (name, email, password) => {
 				dispatch(loginAction(user.uid, user.displayName));
 			})
 			.catch((error) => {
-				console.log(error);
+				registerFormValidation({}, dispatch, true, error.message);
 			});
 	};
 };
@@ -53,8 +54,8 @@ export const loginWithEmailAndPasswordAction = (email, password) => {
 				dispatch(finishLoadingAction());
 			})
 			.catch((error) => {
-				console.log(error);
 				dispatch(finishLoadingAction());
+				loginFormValidation({}, dispatch, true, error.message);
 			});
 	};
 };

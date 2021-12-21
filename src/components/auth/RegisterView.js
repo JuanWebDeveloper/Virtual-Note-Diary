@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -8,8 +7,7 @@ import { registerAction } from '../../actions/auth';
 
 export const RegisterView = () => {
 	const dispatch = useDispatch();
-	const { errorMessage, withMistakes } = useSelector((state) => state.interface);
-	const [validateField, setValidateField] = useState();
+	const { errorMessage, withMistakes, validateField } = useSelector((state) => state.interface);
 
 	const [formValues, handleInputChange] = useForm({
 		name: '',
@@ -24,9 +22,8 @@ export const RegisterView = () => {
 		e.preventDefault();
 
 		const validationForm = registerFormValidation(formValues, dispatch);
-		setValidateField(validationForm.field);
 
-		if (validationForm.errorStatus) {
+		if (validationForm) {
 			dispatch(registerAction(name, email, password));
 		}
 	};
