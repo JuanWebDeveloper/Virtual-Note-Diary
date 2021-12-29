@@ -1,23 +1,30 @@
-import React from 'react';
+import { useDispatch } from 'react-redux';
+import moment from 'moment';
 
-export const SingleNote = () => {
+export const SingleNote = ({ id, title, description, createdAt, imageUrl }) => {
+	const dispatch = useDispatch();
+	const creationDateFormatting = moment(createdAt);
+
 	return (
 		<div className='diary__single-note'>
-			<div
-				className='diary__single-note-picture'
-				style={{
-					backgroundSize: 'cover',
-					backgroundImage: `url(https://www.tooltyp.com/wp-content/uploads/2014/10/1900x920-8-beneficios-de-usar-imagenes-en-nuestros-sitios-web.jpg)`,
-				}}
-			></div>
+			{imageUrl && (
+				<div
+					className='diary__single-note-picture'
+					style={{
+						backgroundSize: 'cover',
+						backgroundImage: `url(${imageUrl})`,
+					}}
+				></div>
+			)}
 
 			<div className='diary__single-note-body'>
-				<p className='diary__single-note-title'>Application under construction</p>
+				<p className='diary__single-note-title'>{title}</p>
+				{!imageUrl && <p className='diary__single-note-description'>{description}</p>}
 			</div>
 
 			<div className='diary__single-note-date-box'>
-				<span>Monday</span>
-				<h4>28</h4>
+				<span>{creationDateFormatting.format('dddd')}</span>
+				<h4>{creationDateFormatting.format('D')}</h4>
 			</div>
 		</div>
 	);

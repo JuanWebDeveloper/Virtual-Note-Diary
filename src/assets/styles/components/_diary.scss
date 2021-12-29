@@ -100,6 +100,12 @@
 			font-weight: $font_weight_sub-title;
 			margin: 10px 0;
 		}
+
+		.diary__single-note-description {
+			color: $text_color;
+			font-size: $font_size_text;
+			font-weight: $font_weight_text;
+		}
 	}
 
 	.diary__single-note-date-box {
@@ -108,6 +114,7 @@
 		flex-direction: column;
 
 		span {
+			color: $title_color;
 			font-size: $font_size_text;
 		}
 
