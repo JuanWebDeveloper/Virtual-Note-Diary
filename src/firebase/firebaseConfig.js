@@ -1,4 +1,6 @@
 import { initializeApp } from 'firebase/app';
+
+// Imports To Work With Firebase Authentication
 import {
 	getAuth,
 	signInWithPopup,
@@ -9,6 +11,9 @@ import {
 	onAuthStateChanged,
 	signOut,
 } from 'firebase/auth';
+
+// Imports To Work With Firebase Firestore
+import { getFirestore, addDoc, collection } from 'firebase/firestore';
 
 // Firebase Config
 const firebaseConfig = {
@@ -23,9 +28,12 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 
-// Firebase authentication settings
+// Firebase Authentication Settings
 const auth = getAuth();
 const googleAuthProvider = new GoogleAuthProvider();
+
+// Firebase Firestore Settings
+const firestore = getFirestore();
 
 export {
 	firebaseApp,
@@ -37,4 +45,7 @@ export {
 	signInWithEmailAndPassword,
 	onAuthStateChanged,
 	signOut,
+	firestore,
+	addDoc,
+	collection,
 };
