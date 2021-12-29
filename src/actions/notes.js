@@ -6,8 +6,8 @@ export const actionAddNewNote = () => {
 		const { uid } = getState().auth;
 
 		const newNote = {
-			title: 'Hello',
-			description: 'Hello World',
+			title: '',
+			description: '',
 			createdAt: new Date().toISOString(),
 		};
 

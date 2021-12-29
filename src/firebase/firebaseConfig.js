@@ -13,7 +13,7 @@ import {
 } from 'firebase/auth';
 
 // Imports To Work With Firebase Firestore
-import { getFirestore, addDoc, collection } from 'firebase/firestore';
+import { getFirestore, addDoc, collection, doc, getDocs, updateDoc } from 'firebase/firestore';
 
 // Firebase Config
 const firebaseConfig = {
@@ -48,4 +48,7 @@ export {
 	firestore,
 	addDoc,
 	collection,
+	doc,
+	getDocs,
+	updateDoc,
 };

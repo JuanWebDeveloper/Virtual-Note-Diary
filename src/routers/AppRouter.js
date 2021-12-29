@@ -11,6 +11,7 @@ import { LoadingView } from '../components/layout/LoadingView';
 import { PublicRouter } from './PublicRouter';
 import { PrivateRouter } from './PrivateRouter';
 import { DashboardRouter } from './DashboardRouter';
+import { getNotes } from '../helpers/getNotes';
 
 export const AppRouter = () => {
 	const dispatch = useDispatch();
@@ -22,6 +23,7 @@ export const AppRouter = () => {
 			if (user?.uid) {
 				dispatch(loginAction(user.uid, user.displayName));
 				setSessionIsActive(true);
+				getNotes(user.uid);
 			} else {
 				setSessionIsActive(false);
 			}
