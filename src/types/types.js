@@ -10,4 +10,5 @@ export const types = {
 	finishLoading: '[Interface] Finish Loading',
 	// Types For Notes
 	noteActive: '[Notes] Note Active',
+	getNotes: '[Notes] Get Notes',
 };

@@ -8,6 +8,5 @@ export const getNotes = async (uid) => {
 		userNotes.push({ id: note.id, ...note.data() });
 	});
 
-	console.log(userNotes);
 	return userNotes;
 };
