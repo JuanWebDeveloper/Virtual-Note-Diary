@@ -21,3 +21,8 @@ export const actionNoteActive = (noteId, note) => ({
 	type: types.noteActive,
 	payload: { noteId, ...note },
 });
+
+export const actionOfGetNotes = (notes) => ({
+	type: types.getNotes,
+	payload: notes,
+});
