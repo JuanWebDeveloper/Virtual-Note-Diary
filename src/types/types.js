@@ -8,4 +8,6 @@ export const types = {
 	// Types For Loading
 	startLoading: '[Interface]  Start Loading',
 	finishLoading: '[Interface] Finish Loading',
+	// Types For Notes
+	noteActive: '[Notes] Note Active',
 };
