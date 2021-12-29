@@ -1,12 +1,17 @@
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
+import { actionNoteActive } from '../../actions/notes';
 
 export const SingleNote = ({ id, title, description, createdAt, imageUrl }) => {
 	const dispatch = useDispatch();
 	const creationDateFormatting = moment(createdAt);
 
+	const handleNoteActive = () => {
+		dispatch(actionNoteActive(id, { title, description, createdAt, imageUrl }));
+	};
+
 	return (
-		<div className='diary__single-note'>
+		<div className='diary__single-note' onClick={handleNoteActive}>
 			{imageUrl && (
 				<div
 					className='diary__single-note-picture'
