@@ -2,12 +2,12 @@ import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import { actionNoteActive } from '../../actions/notes';
 
-export const SingleNote = ({ id, title, description, createdAt, imageUrl }) => {
+export const SingleNote = ({ id, title, description, createdAt, updatedAt, imageUrl }) => {
 	const dispatch = useDispatch();
 	const creationDateFormatting = moment(createdAt);
 
 	const handleNoteActive = () => {
-		dispatch(actionNoteActive(id, { title, description, createdAt, imageUrl }));
+		dispatch(actionNoteActive(id, { title, description, createdAt, updatedAt, imageUrl }));
 	};
 
 	return (

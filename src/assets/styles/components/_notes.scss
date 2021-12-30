@@ -18,6 +18,10 @@
 	h3 {
 		font-size: $font_size_button;
 		font-weight: $font_weight_button;
+
+		span {
+			color: $title_color;
+		}
 	}
 
 	.notes__note-navbar-buttons {

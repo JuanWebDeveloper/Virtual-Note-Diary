@@ -1,9 +1,11 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import moment from 'moment';
 
 import { actionSaveChanges, actionToUploadImage } from '../../actions/notes';
 
 export const NoteNavbar = () => {
 	const dispatch = useDispatch();
+	const { activeNote } = useSelector((state) => state.notes);
 
 	const handleSaveChanges = () => {
 		dispatch(actionSaveChanges());
@@ -19,7 +21,16 @@ export const NoteNavbar = () => {
 
 	return (
 		<div className='notes__note-navbar'>
-			<h3>28/10/21</h3>
+			{activeNote.updatedAt ? (
+				<h3>
+					Last modified on <span>{moment(activeNote.updatedAt).format('MMMM D YYYY, h:mm a')}</span>
+				</h3>
+			) : (
+				<h3>
+					Was created the <span>{moment(activeNote.createdAt).format('MMMM D YYYY, h:mm a')}</span>
+				</h3>
+			)}
+
 			<input type='file' style={{ display: 'none' }} id='selectedFile' onChange={handleSelectedFileChange} />
 
 			<div className='notes__note-navbar-buttons'>
