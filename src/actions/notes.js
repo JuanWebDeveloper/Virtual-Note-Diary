@@ -41,7 +41,17 @@ export const actionSaveChanges = () => {
 		delete noteToSend.noteId;
 
 		await updateDoc(doc(firestore, `${uid}/diary/notes/${activeNote.noteId}`), noteToSend);
-
-		console.log('Saved changes');
+		dispatch(actionOfUpdateChanges(activeNote.noteId, noteToSend));
 	};
 };
+
+export const actionOfUpdateChanges = (noteId, note) => ({
+	type: types.refreshNoteChanges,
+	payload: {
+		noteId,
+		note: {
+			id: noteId,
+			...note,
+		},
+	},
+});

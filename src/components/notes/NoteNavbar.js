@@ -5,7 +5,9 @@ import { actionSaveChanges } from '../../actions/notes';
 export const NoteNavbar = () => {
 	const dispatch = useDispatch();
 
-	const handleSaveChanges = () => dispatch(actionSaveChanges());
+	const handleSaveChanges = () => {
+		dispatch(actionSaveChanges());
+	};
 
 	return (
 		<div className='notes__note-navbar'>
