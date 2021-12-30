@@ -1,13 +1,11 @@
 import { useRef, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { actionNoteActive } from '../../actions/notes';
+import { useSelector } from 'react-redux';
 
 import { useForm } from '../../hooks/useForm';
 
 import { NoteNavbar } from './NoteNavbar';
 
 export const NoteView = () => {
-	const dispatch = useDispatch();
 	const { activeNote } = useSelector((state) => state.notes);
 	const activeNoteId = useRef(activeNote.noteId);
 
@@ -21,13 +19,9 @@ export const NoteView = () => {
 		}
 	}, [activeNote, reset]);
 
-	useEffect(() => {
-		dispatch(actionNoteActive(formValues.noteId, { ...formValues }));
-	}, [dispatch, formValues]);
-
 	return (
 		<div className='notes__main'>
-			<NoteNavbar />
+			<NoteNavbar {...formValues} />
 
 			<div className='notes__main-content'>
 				<input

@@ -1,13 +1,22 @@
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 
-import { actionSaveChanges, actionToUploadImage } from '../../actions/notes';
+import { actionNoteActive, actionSaveChanges, actionToUploadImage } from '../../actions/notes';
 
-export const NoteNavbar = () => {
+export const NoteNavbar = ({ title, description }) => {
 	const dispatch = useDispatch();
 	const { activeNote } = useSelector((state) => state.notes);
 
 	const handleSaveChanges = () => {
+		const noteActiveToSave = {
+			...activeNote,
+			title,
+			description,
+		};
+
+		delete noteActiveToSave.noteId;
+
+		dispatch(actionNoteActive(activeNote.noteId, { ...noteActiveToSave }));
 		dispatch(actionSaveChanges());
 	};
 
