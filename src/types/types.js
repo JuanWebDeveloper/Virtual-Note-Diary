@@ -10,6 +10,7 @@ export const types = {
 	finishLoading: '[Interface] Finish Loading',
 	// Types For Notes
 	noteActive: '[Notes] Note Active',
+	addNewNote: '[Notes] Add New Note',
 	getNotes: '[Notes] Get Notes',
 	refreshNoteChanges: '[Notes] Refresh Note Changes',
 };

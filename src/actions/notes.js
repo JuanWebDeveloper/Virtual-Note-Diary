@@ -16,12 +16,18 @@ export const actionAddNewNote = () => {
 		const documentReferenceCreated = await addDoc(collection(firestore, `${uid}/diary/notes`), newNote);
 
 		dispatch(actionNoteActive(documentReferenceCreated.id, newNote));
+		dispatch(actionAddNote(documentReferenceCreated.id, newNote));
 	};
 };
 
 export const actionNoteActive = (noteId, note) => ({
 	type: types.noteActive,
 	payload: { noteId, ...note },
+});
+
+export const actionAddNote = (id, note) => ({
+	type: types.addNewNote,
+	payload: { id, ...note },
 });
 
 export const actionOfGetNotes = (notes) => ({
