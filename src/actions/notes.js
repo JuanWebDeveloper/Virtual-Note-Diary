@@ -1,5 +1,7 @@
 import { firestore, addDoc, collection, doc, updateDoc } from '../firebase/firebaseConfig';
+
 import { types } from '../types/types';
+import { uploadFiles } from '../helpers/uploadFiles';
 
 export const actionAddNewNote = () => {
 	return async (dispatch, getState) => {
@@ -55,3 +57,14 @@ export const actionOfUpdateChanges = (noteId, note) => ({
 		},
 	},
 });
+
+export const actionToUploadImage = (file) => {
+	return async (dispatch, getState) => {
+		const { activeNote } = getState().notes;
+
+		const fileUrl = await uploadFiles(file);
+		activeNote.imageUrl = fileUrl;
+
+		dispatch(actionSaveChanges(activeNote));
+	};
+};

@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 
-import { actionSaveChanges } from '../../actions/notes';
+import { actionSaveChanges, actionToUploadImage } from '../../actions/notes';
 
 export const NoteNavbar = () => {
 	const dispatch = useDispatch();
@@ -14,7 +14,7 @@ export const NoteNavbar = () => {
 	const handleSelectedFileChange = (e) => {
 		const file = e.target.files[0];
 
-		console.log(file);
+		file && dispatch(actionToUploadImage(file));
 	};
 
 	return (
